@@ -1,3 +1,5 @@
+package com.alexcomeau;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,7 +46,7 @@ public class Debug{
             out.println(sep);
             out.close();
         } catch (IOException e) {
-            File f = new File(System.getenv("APPDATA") + "\\AlexRpg\\logs\\");
+            File f = new File(logs);
             f.mkdirs();
             debug("attempting to create logs folder to fix issue");
 
@@ -84,7 +86,7 @@ public class Debug{
                 out.println(sep);
                 out.close();
             } catch (IOException e) {
-                File f = new File(System.getenv("APPDATA") + "\\AlexRpg\\logs\\");
+                File f = new File(logs);
                 f.mkdirs();
                 debug("attempting to create logs folder to fix issue");
             }
