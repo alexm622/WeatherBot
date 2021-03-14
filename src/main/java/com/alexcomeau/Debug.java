@@ -15,7 +15,7 @@ public class Debug{
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             Date date = new Date();
             PrintWriter out = new PrintWriter(new FileWriter(
-                     logs + dateFormat.format(date) + ".txt", true));
+                     logs + dateFormat.format(date) + ".log", true));
             dateFormat = new SimpleDateFormat("[yyyy:MM:dd HH:mm:ss] -- ");
             String fullClassName = Thread.currentThread().getStackTrace()[2].getClassName();
             String className = fullClassName.substring(fullClassName.lastIndexOf(".") + 1);
@@ -58,7 +58,7 @@ public class Debug{
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
                 Date date = new Date();
                 PrintWriter out = new PrintWriter(new FileWriter(
-                        logs + dateFormat.format(date) + ".txt", true));
+                        logs + dateFormat.format(date) + ".log", true));
                 dateFormat = new SimpleDateFormat("[yyyy:MM:dd HH:mm:ss] -- ");
                 String fullClassName = Thread.currentThread().getStackTrace()[2].getClassName();
                 String className = fullClassName.substring(fullClassName.lastIndexOf(".") + 1);
