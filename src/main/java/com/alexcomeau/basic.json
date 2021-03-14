@@ -1,0 +1,43 @@
+{
+  "coord":{
+    "lon":-72.8582,
+    "lat":41.6745
+  },
+  "weather":[
+    {
+      "id":800,
+      "main":"Clear",
+      "description":"clear sky",
+      "icon":"01n"
+    }
+  ],
+  "base":"stations",
+  "main":{
+    "temp":273.81,
+    "feels_like":269.47,
+    "temp_min":272.04,
+    "temp_max":275.37,
+    "pressure":1018,
+    "humidity":35
+  },
+  "visibility":10000,
+  "wind":{
+    "speed":1.54,
+    "deg":250
+  },
+  "clouds":{
+    "all":1
+  },
+  "dt":1615692253,
+  "sys":{
+    "type":1,
+    "id":4931,
+    "country":"US",
+    "sunrise":1615633578,
+    "sunset":1615676130
+  },
+  "timezone":-18000,
+  "id":4840767,
+  "name":"Plainville",
+  "cod":200
+}
