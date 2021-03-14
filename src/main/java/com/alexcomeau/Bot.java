@@ -13,6 +13,7 @@ public class Bot extends ListenerAdapter {
     {
         String pat = "332583326424629259";
         String zach = "238022080753434625";
+        String logan = "425736837538250762";
 
         Message msg = event.getMessage();
         /*
@@ -29,8 +30,8 @@ public class Bot extends ListenerAdapter {
             Debug.debug("pat test in server " +  msg.getGuild().getId());
             Random r = new Random();
             r.setSeed(System.currentTimeMillis());
-            int rand = r.nextInt(100);
-             if(rand != 69){
+            int rand = r.nextInt(50);
+             if(rand != 30){
                  Debug.debug("not telling pat to shut up in server " +  msg.getGuild().getId());
                  return;
              }
@@ -43,13 +44,27 @@ public class Bot extends ListenerAdapter {
             Debug.debug("zach test set off in server " + msg.getGuild().getId());
             Random r = new Random();
             r.setSeed(System.currentTimeMillis());
-            int rand = r.nextInt(100);
-            if(rand != 82){
-                Debug.debug("not calling zach liberal in server " +  msg.getGuild().getId());
+            int rand = r.nextInt(50);
+            if(rand != 40){
+                Debug.debug("no goose zach " +  msg.getGuild().getId());
                 return;
             }
             Debug.debug("sending zach message in server " +  msg.getGuild().getId());
-            event.getChannel().sendMessage("Shut up Liberal").queue();
+            event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
+            return;
+        }
+        //MONKE
+        if(msg.getAuthor().getId().equals(logan)){
+            Debug.debug("logan test set off in server " + msg.getGuild().getId());
+            Random r = new Random();
+            r.setSeed(System.currentTimeMillis());
+            int rand = r.nextInt(50);
+            if(rand != 35){
+                Debug.debug("no logan event" +  msg.getGuild().getId());
+                return;
+            }
+            Debug.debug("sending logan message in server " +  msg.getGuild().getId());
+            event.getChannel().sendMessage("MMMM, Look at this monke").queue();
             return;
         }
         if (msg.getContentRaw().equals("&ping"))
@@ -60,6 +75,11 @@ public class Bot extends ListenerAdapter {
                     .queue(response /* => Message */ -> {
                         response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
                     });
+            return;
+        }
+        if (msg.getContentRaw().equals("&goose"))
+        {
+            event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
             return;
         }
 
