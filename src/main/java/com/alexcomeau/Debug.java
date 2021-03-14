@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Debug{
-    private static final String logs = "logs\\";
+    private static final String logs = "logs/";
     public static void debug(Object msg, boolean err) {
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
