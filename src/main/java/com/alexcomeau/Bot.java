@@ -33,11 +33,11 @@ public class Bot extends ListenerAdapter {
             int rand = r.nextInt(50);
              if(rand != 30){
                  Debug.debug("not telling pat to shut up in server " +  msg.getGuild().getId());
-                 return;
+
+             }else {
+                 Debug.debug("sending pat message in server " + msg.getGuild().getId());
+                 event.getChannel().sendMessage("Shut up pat, you're dead").queue();
              }
-             Debug.debug("sending pat message in server " +  msg.getGuild().getId());
-             event.getChannel().sendMessage("Shut up pat, you're dead").queue();
-             return;
         }
         //randomly call zach a liberal
         if(msg.getAuthor().getId().equals(zach)){
@@ -47,11 +47,11 @@ public class Bot extends ListenerAdapter {
             int rand = r.nextInt(50);
             if(rand != 40){
                 Debug.debug("no goose zach " +  msg.getGuild().getId());
-                return;
+
+            }else {
+                Debug.debug("sending zach message in server " + msg.getGuild().getId());
+                event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
             }
-            Debug.debug("sending zach message in server " +  msg.getGuild().getId());
-            event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
-            return;
         }
         //MONKE
         if(msg.getAuthor().getId().equals(logan)){
@@ -61,11 +61,10 @@ public class Bot extends ListenerAdapter {
             int rand = r.nextInt(50);
             if(rand != 35){
                 Debug.debug("no logan event" +  msg.getGuild().getId());
-                return;
+            }else {
+                Debug.debug("sending logan message in server " + msg.getGuild().getId());
+                event.getChannel().sendMessage("MMMM, Look at this monke").queue();
             }
-            Debug.debug("sending logan message in server " +  msg.getGuild().getId());
-            event.getChannel().sendMessage("MMMM, Look at this monke").queue();
-            return;
         }
         if (msg.getContentRaw().equals("&ping"))
         {
@@ -77,7 +76,7 @@ public class Bot extends ListenerAdapter {
                     });
             return;
         }
-        if (msg.getContentRaw().equals("&goose"))
+        if (msg.getContentRaw().equals("&goose") || msg.getContentRaw().startsWith("&goose"))
         {
             event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
             return;
