@@ -49,12 +49,12 @@ public class Response {
         this.main = main;
     }
 
-    public long getVisbility() {
+    public long getVisibility() {
         return visbility;
     }
 
-    public void setVisbility(long visbility) {
-        this.visbility = visbility;
+    public void setVisibility(long visibility) {
+        this.visbility = visibility;
     }
 
     public Wind getWind() {

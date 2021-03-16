@@ -2,7 +2,7 @@ package com.alexcomeau.response;
 
 public class Weather {
     private int id;
-    private String main_name;
+    private String main;
     private String description;
     private String icon;
 
@@ -14,12 +14,12 @@ public class Weather {
         this.id = id;
     }
 
-    public String getMain_name() {
-        return main_name;
+    public String getMain() {
+        return main;
     }
 
-    public void setMain_name(String main_name) {
-        this.main_name = main_name;
+    public void setMain(String main) {
+        this.main = main;
     }
 
     public String getDescription() {
