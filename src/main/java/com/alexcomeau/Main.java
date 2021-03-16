@@ -12,7 +12,7 @@ public class Main {
 
 
     public static void main(String[] args) throws LoginException {
-        JDABuilder.createLight(ReadToken.ReadToken(), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
+        JDABuilder.createLight(ReadToken.DiscordToken(), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
                 .setActivity(Activity.playing("Type &ping"))
                 .addEventListeners(new Bot())
                 .build();
