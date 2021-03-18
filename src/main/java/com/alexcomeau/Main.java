@@ -15,13 +15,10 @@ public class Main {
 
 
     public static void main(String[] args) throws LoginException, IOException {
-        /*JDABuilder.createLight(ReadToken.DiscordToken(), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
-                .setActivity(Activity.playing("Type &ping"))
+        JDABuilder.createLight(ReadToken.DiscordToken(), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
+                .setActivity(Activity.playing("Poop Fart"))
                 .addEventListeners(new Bot())
-                .build();*/
-        String response = ApiRequest.makeRequest();
-        Debug.debug(response);
-        ObjectMapper om = new ObjectMapper();
-        Response r = om.readValue(response, Response.class);
+                .build();
+
     }
 }
