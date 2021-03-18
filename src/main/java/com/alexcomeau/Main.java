@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 public class Main {
-
+    public static final String prefix = "&"; // TODO this will later be changeable by the user
 
     public static void main(String[] args) throws LoginException, IOException {
         JDABuilder.createLight(ReadToken.DiscordToken(), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
