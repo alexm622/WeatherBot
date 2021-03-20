@@ -10,7 +10,7 @@ import java.io.IOException;
 public class WeatherCommands {
     public static boolean weatherCommands(MessageReceivedEvent event, Message msg, String prefix) throws IOException {
         Debug.debug("does message start with &w: " + msg.getContentRaw().startsWith(prefix + "w "));
-        if(msg.getContentRaw().startsWith(prefix + "w ")){
+        if(msg.getContentRaw().startsWith(prefix + "w")){
 
             String[] subs = msg.getContentRaw().split(" ");
             StringBuilder sb = new StringBuilder();
@@ -31,7 +31,7 @@ public class WeatherCommands {
 
             String request = ApiRequest.createRequest(city);
             Debug.debug("got request request of " + request);
-            String output = ApiRequest.makeRequest(request);
+            String output = ApiRequest.makeRequest(request).replace(" ", "%20");
             Debug.debug("got request output of " + request);
             MessageChannel channel = event.getChannel();
             channel.sendMessage(output) /* => RestAction<Message> */
