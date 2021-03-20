@@ -21,12 +21,12 @@ public class Bot extends ListenerAdapter {
 
         //test for easter eggs
         if(EasterEgg.easterEgg(msg, event, prefix)){
-            Debug.debug("breaking from easter egg");
+            //Debug.debug("breaking from easter egg");
             return;
         }
         //weather commands test
         try {
-            Debug.debug("trying weather commands");
+            //Debug.debug("trying weather commands");
             WeatherCommands.weatherCommands(event, msg, prefix);
         } catch (IOException e) {
             e.printStackTrace();
