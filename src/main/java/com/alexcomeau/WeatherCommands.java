@@ -29,9 +29,9 @@ public class WeatherCommands {
             city=ApiRequest.cleanRequest(city);
             Debug.debug("cleaned " + city);
 
-            String request = ApiRequest.createRequest(city);
+            String request = ApiRequest.createRequest(city).replace("\\s+", "%20");
             Debug.debug("got request request of " + request);
-            String output = ApiRequest.makeRequest(request).replace("\\s+", "%20");
+            String output = ApiRequest.makeRequest(request);
             Debug.debug("got request output of " + request);
             MessageChannel channel = event.getChannel();
             channel.sendMessage(output) /* => RestAction<Message> */
