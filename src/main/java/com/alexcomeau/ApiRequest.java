@@ -1,5 +1,8 @@
 package com.alexcomeau;
 
+import com.alexcomeau.response.Weather;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -13,7 +16,7 @@ import java.util.regex.Pattern;
 
 public class ApiRequest {
     public static String makeRequest(String apiRequest) throws IOException {
-        String apiReq= "";
+        String apiReq= apiRequest;
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(apiReq);
         HttpResponse response = client.execute(request);
@@ -30,20 +33,20 @@ public class ApiRequest {
 
     }
 
-    public static String formatRequest(String city){
-        if(getSpecialCharacters(city)){
+    public static String cleanRequest(String city){
+        if(hasSpecialCharacters(city)){
             return "invalid";
         }
 
-        return null;
+        return city;
     }
 
-    public static boolean getSpecialCharacters(String s) {
+    public static boolean hasSpecialCharacters(String s) {
         if (s == null || s.trim().isEmpty()) {
             System.out.println("Incorrect format of string");
             return true;
         }
-        Pattern p = Pattern.compile("[^A-Za-z0-9. - ]");
+        Pattern p = Pattern.compile("[^A-Za-z0-9. - ,]");
         Matcher m = p.matcher(s);
         // boolean b = m.matches();
         boolean b = m.find();
@@ -54,5 +57,17 @@ public class ApiRequest {
             System.out.println("There is no special char.");
             return false;
         }
+    }
+
+    public static String createRequest(String city) {
+        final String template = "http://api.openweathermap.org/data/2.5/weather?q=$&appid=";
+        String out = template.replace("$", city) + ReadToken.WeatherToken();
+        return out;
+    }
+
+    public static Weather jsonToObject(String json) throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        Weather w = om.readValue(json, Weather.class);
+        return w;
     }
 }

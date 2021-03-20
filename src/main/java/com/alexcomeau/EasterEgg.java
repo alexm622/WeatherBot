@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.Random;
 
 public class EasterEgg {
-    public static void easterEgg(Message msg, MessageReceivedEvent event, String prefix){
+    public static boolean easterEgg(Message msg, MessageReceivedEvent event, String prefix){
         String pat = "332583326424629259";
         String zach = "238022080753434625";
         String logan = "425736837538250762";
@@ -38,6 +38,7 @@ public class EasterEgg {
             }else {
                 Debug.debug("sending zach message in server " + msg.getGuild().getId());
                 event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
+                return true;
             }
         }
         //MONKE
@@ -57,7 +58,8 @@ public class EasterEgg {
         if (msg.getContentRaw().equals(prefix + "goose") || msg.getContentRaw().startsWith("&goose"))
         {
             event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
-            return;
+            return true;
         }
+        return false;
     }
 }

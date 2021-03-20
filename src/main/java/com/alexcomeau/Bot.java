@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class Bot extends ListenerAdapter {
@@ -14,10 +15,20 @@ public class Bot extends ListenerAdapter {
         String prefix = Main.prefix;
 
         Message msg = event.getMessage();
+        if(msg.getAuthor().isBot()) {
+            return;
+        }
+
         //test for easter eggs
-        EasterEgg.easterEgg(msg, event, prefix);
+        if(EasterEgg.easterEgg(msg, event, prefix)){
+            return;
+        }
         //weather commands test
-        WeatherCommands.weatherCommands(event, msg, prefix);
+        try {
+            WeatherCommands.weatherCommands(event, msg, prefix);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         //generic ping test
@@ -34,9 +45,7 @@ public class Bot extends ListenerAdapter {
 
 
 
-        if(msg.getAuthor().isBot()) {
-            return;
-        }
+
 
 
 
