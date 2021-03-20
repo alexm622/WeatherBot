@@ -5,7 +5,7 @@ public class Response {
     private Weather[] weather;
     private String base;
     private MainResponse main;
-    private long visbility;
+    private long visibility;
     private Wind wind;
     private Clouds clouds; // cloud percentage
     private Rain rain;
@@ -15,6 +15,7 @@ public class Response {
     private long timezone;
     private long id;
     private String name;
+    private String message;
     private int cod;
 
     public Coord getCoord() {
@@ -50,11 +51,11 @@ public class Response {
     }
 
     public long getVisibility() {
-        return visbility;
+        return visibility;
     }
 
     public void setVisibility(long visibility) {
-        this.visbility = visibility;
+        this.visibility = visibility;
     }
 
     public Wind getWind() {
@@ -135,5 +136,14 @@ public class Response {
 
     public void setCod(int cod) {
         this.cod = cod;
+    }
+
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
