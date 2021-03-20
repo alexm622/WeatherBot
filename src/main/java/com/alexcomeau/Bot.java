@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.io.IOException;
-import java.util.Random;
 
 public class Bot extends ListenerAdapter {
     @Override
@@ -27,7 +26,9 @@ public class Bot extends ListenerAdapter {
         //weather commands test
         try {
             //Debug.debug("trying weather commands");
-            WeatherCommands.weatherCommands(event, msg, prefix);
+            if(WeatherCommands.weatherCommands(event, msg, prefix)){
+                return;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,11 +40,11 @@ public class Bot extends ListenerAdapter {
             MessageChannel channel = event.getChannel();
             long time = System.currentTimeMillis();
             channel.sendMessage("Pong!") /* => RestAction<Message> */
-                    .queue(response /* => Message */ -> {
-                        response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
-                    });
-            return;
+                    .queue(response /* => Message */ -> response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue());
+            //return;
         }
+
+        //nothing triggered
 
 
 

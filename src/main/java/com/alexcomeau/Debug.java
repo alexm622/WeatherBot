@@ -24,7 +24,7 @@ public class Debug{
             String temp = dateFormat.format(date);
             temp += className;
             temp += "." + methodName + "():";
-            temp += Integer.toString(lineNumber) + ": ";
+            temp += lineNumber + ": ";
             temp += msg;
             temp += " \n";
             String sep = "----------------------------------";
@@ -47,8 +47,8 @@ public class Debug{
             out.close();
         } catch (IOException e) {
             File f = new File(logs);
-            f.mkdirs();
-            debug("attempting to create logs folder to fix issue");
+            boolean result = f.mkdirs();
+            debug("attempting to create logs folder to fix issue. was it the issue: " + result);
 
         }
     }
@@ -67,7 +67,7 @@ public class Debug{
                 String temp = dateFormat.format(date);
                 temp += className;
                 temp += "." + methodName + "():";
-                temp += Integer.toString(lineNumber) + ": ";
+                temp += lineNumber + ": ";
                 temp += msg;
                 temp += " \n";
                 String sep = "----------------------------------";
@@ -87,8 +87,8 @@ public class Debug{
                 out.close();
             } catch (IOException e) {
                 File f = new File(logs);
-                f.mkdirs();
-                debug("attempting to create logs folder to fix issue");
+                boolean result = f.mkdirs();
+                debug("attempting to create logs folder to fix issue. was it the issue: " + result);
             }
         }
 }

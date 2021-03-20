@@ -1,6 +1,5 @@
 package com.alexcomeau;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -20,7 +19,7 @@ public class WeatherCommands {
                     temp++;
                     continue;
                 }
-                sb.append(s + " ");
+                sb.append(s).append(" ");
             }
 
             String city = sb.toString().trim();
