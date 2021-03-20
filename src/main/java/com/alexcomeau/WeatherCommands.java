@@ -29,7 +29,7 @@ public class WeatherCommands {
             city=ApiRequest.cleanRequest(city);
             Debug.debug("cleaned " + city);
 
-            String request = ApiRequest.createRequest(city).replace("\\s+", "$").replace("$", "%20");
+            String request = ApiRequest.createRequest(city).replace(" ", "$").replace("$", "%20");
             Debug.debug("got request request of " + request);
             String output = ApiRequest.makeRequest(request);
             Debug.debug("got request output of " + request);
