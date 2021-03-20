@@ -38,5 +38,7 @@ public class WeatherCommands {
 
 
         }
+        return false;
     }
+
 }
