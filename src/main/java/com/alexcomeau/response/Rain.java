@@ -1,8 +1,8 @@
 package com.alexcomeau.response;
 
 public class Rain {
-    private float one;
-    private float three;
+    private float one = 0;
+    private float three = 0;
 
     public float getOne() {
         return one;

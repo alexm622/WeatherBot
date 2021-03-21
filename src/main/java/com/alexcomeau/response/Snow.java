@@ -1,8 +1,8 @@
 package com.alexcomeau.response;
 
 public class Snow {
-    private float one;
-    private float three;
+    private float one = 0;
+    private float three = 0;
 
     public float getOne() {
         return one;

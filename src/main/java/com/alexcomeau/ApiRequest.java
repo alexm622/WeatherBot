@@ -1,5 +1,6 @@
 package com.alexcomeau;
 
+import com.alexcomeau.response.Response;
 import com.alexcomeau.response.Weather;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -82,14 +83,14 @@ public class ApiRequest {
     }
 
     //map the raw json to a Weather object
-    public static Weather jsonToObject(String json) throws JsonProcessingException {
+    public static Response jsonToObject(String json) throws JsonProcessingException {
         //create an object mapper
         ObjectMapper om = new ObjectMapper();
 
         //map the json
-        Weather w = om.readValue(json, Weather.class);
+        Response r = om.readValue(json, Response.class);
 
         //return the json
-        return w;
+        return r;
     }
 }

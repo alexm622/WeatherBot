@@ -1,5 +1,6 @@
 package com.alexcomeau;
 
+import com.alexcomeau.response.Response;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -55,6 +56,8 @@ public class WeatherCommands {
             //TODO make this print out an embedded and handle error messages
             channel.sendMessage(output) /* => RestAction<Message> */
                     .queue();
+            Response r = ApiRequest.jsonToObject(output);
+            channel.sendMessage(WeatherEmbed.buildEmbeded(r, city)).queue();
             return true;
 
 

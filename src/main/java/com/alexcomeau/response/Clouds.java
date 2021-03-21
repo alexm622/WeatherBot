@@ -3,7 +3,7 @@ package com.alexcomeau.response;
 public class Clouds {
     private int all; //percentage 0-100
 
-    public int getALl(){
+    public int getAll(){
         return this.all;
     }
 
