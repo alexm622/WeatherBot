@@ -61,12 +61,14 @@ public class WeatherEmbed {
         try{
             w.getRain();
         }catch(NullPointerException e){
+            Debug.debug("rain was null");
             w.setRain(new Rain());
             rain = false;
         }
         try{
             w.getSnow();
         }catch(NullPointerException e){
+            Debug.debug("snow was null");
             w.setSnow(new Snow());
             snow=false;
         }
@@ -76,7 +78,7 @@ public class WeatherEmbed {
         }else if(snow){
             precip = precipTemplate.replace("$ ", Float.toString(w.getSnow().getOne())).replace("%", Float.toString((w.getSnow().getThree())));
         }
-        
+
 
         Debug.debug("precip is " + precip);
         return "";
