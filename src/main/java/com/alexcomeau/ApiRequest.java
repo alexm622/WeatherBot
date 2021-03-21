@@ -36,7 +36,7 @@ public class ApiRequest {
         }
         //debug print the api response
         Debug.debug("api response was: \n" + apiResponse.toString());
-        return apiResponse.toString();
+        return apiResponse.toString().replace("1h", "one").replace("3h", "three");
 
     }
 
