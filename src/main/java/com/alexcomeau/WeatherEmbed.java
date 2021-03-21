@@ -54,11 +54,14 @@ public class WeatherEmbed {
     private static String generatePrecip(Response w) {
         //generate precipitation
         String precip = "";
+        /*
         if(w.getRain() != null && w.getRain().getOne() != 0 || w.getRain().getThree() !=0){
             precip = precipTemplate.replace("$ ", Float.toString(w.getRain().getOne())).replace("%", Float.toString(w.getRain().getThree()));
         }else if(w.getSnow() != null && w.getSnow().getOne() != 0 || w.getSnow().getThree() != 0){
             precip = precipTemplate.replace("$ ", Float.toString(w.getSnow().getOne())).replace("%", Float.toString((w.getSnow().getThree())));
         }
+        */
+         
         Debug.debug("precip is " + precip);
         return "";
     }
