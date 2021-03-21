@@ -57,9 +57,10 @@ public class WeatherEmbed {
         if(w.getRain().getOne() != 0 || w.getRain().getThree() !=0){
             precip = precipTemplate.replace("$ ", Float.toString(w.getRain().getOne())).replace("%", Float.toString(w.getRain().getThree()));
         }else if(w.getSnow().getOne() != 0 || w.getSnow().getThree() != 0){
-            precip = precipTemplate.replace("$ ", Float.toString(w.getSnow().getOne())).replace("%", Float.toString(w.getSnow().getThree()));
+            precip = precipTemplate.replace("$ ", Float.toString(w.getSnow().getOne())).replace("%", Float.toString((w.getSnow().getThree())));
         }
-        return precip;
+        Debug.debug("precip is " + precip);
+        return "";
     }
 
     private static String getTime(long unixSeconds){
