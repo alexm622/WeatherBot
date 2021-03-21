@@ -1,6 +1,8 @@
 package com.alexcomeau;
 
+import com.alexcomeau.response.Rain;
 import com.alexcomeau.response.Response;
+import com.alexcomeau.response.Snow;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
@@ -54,14 +56,28 @@ public class WeatherEmbed {
     private static String generatePrecip(Response w) {
         //generate precipitation
         String precip = "";
-        /*
-        if(w.getRain() != null && w.getRain().getOne() != 0 || w.getRain().getThree() !=0){
+        boolean rain = true;
+        boolean snow = true;
+        try{
+            w.getRain();
+        }catch(NullPointerException e){
+            w.setRain(new Rain());
+            rain = false;
+        }
+        try{
+            w.getSnow();
+        }catch(NullPointerException e){
+            w.setSnow(new Snow());
+            snow=false;
+        }
+
+        if(rain){
             precip = precipTemplate.replace("$ ", Float.toString(w.getRain().getOne())).replace("%", Float.toString(w.getRain().getThree()));
-        }else if(w.getSnow() != null && w.getSnow().getOne() != 0 || w.getSnow().getThree() != 0){
+        }else if(snow){
             precip = precipTemplate.replace("$ ", Float.toString(w.getSnow().getOne())).replace("%", Float.toString((w.getSnow().getThree())));
         }
-        */
-         
+        
+
         Debug.debug("precip is " + precip);
         return "";
     }
