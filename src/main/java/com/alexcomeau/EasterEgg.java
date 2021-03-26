@@ -11,6 +11,7 @@ public class EasterEgg {
         String pat = "332583326424629259";
         String zach = "238022080753434625";
         String logan = "425736837538250762";
+        String alex = "227478475760599041";
 
         //randomly tell pat to shut up
         if(msg.getAuthor().getId().equals(pat)){
@@ -57,6 +58,9 @@ public class EasterEgg {
 
         if (msg.getContentRaw().equals(prefix + "goose") || msg.getContentRaw().startsWith("&goose"))
         {
+            if(msg.getAuthor().getId().equals(alex)){
+                msg.delete().queue();
+            }
             event.getChannel().sendMessage("https://tenor.com/view/no-goose-gif-18519407").queue();
             return true;
         }
