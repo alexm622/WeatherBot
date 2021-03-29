@@ -1,4 +1,4 @@
-package com.alexcomeau;
+package com.alexcomeau.utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

@@ -1,6 +1,6 @@
-package com.alexcomeau.response;
+package com.alexcomeau.response.currentweather;
 
-public class Snow {
+public class Rain {
     private float one = 0;
     private float three = 0;
 

@@ -1,6 +1,8 @@
-package com.alexcomeau;
+package com.alexcomeau.bot.commands;
 
-import com.alexcomeau.response.Response;
+import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
+import com.alexcomeau.response.currentweather.Response;
+import com.alexcomeau.utils.ApiRequest;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -36,7 +38,7 @@ public class WeatherCommands {
            // Debug.debug("got city of " + city);
 
             //clean the request, if it contains special characters we remove it
-            city=ApiRequest.cleanRequest(city);
+            city= ApiRequest.cleanRequest(city);
 
             //Debug.debug("cleaned " + city);
 
@@ -57,7 +59,7 @@ public class WeatherCommands {
             channel.sendMessage(output) /* => RestAction<Message> */
                     .queue();
             Response r = ApiRequest.jsonToObject(output);
-            channel.sendMessage(WeatherEmbed.buildEmbeded(r, city)).queue();
+            channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, city)).queue();
             return true;
 
 

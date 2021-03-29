@@ -1,8 +1,9 @@
-package com.alexcomeau;
+package com.alexcomeau.bot.embeds;
 
-import com.alexcomeau.response.Rain;
-import com.alexcomeau.response.Response;
-import com.alexcomeau.response.Snow;
+import com.alexcomeau.response.currentweather.Rain;
+import com.alexcomeau.response.currentweather.Response;
+import com.alexcomeau.response.currentweather.Snow;
+import com.alexcomeau.utils.Debug;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
@@ -11,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
-public class WeatherEmbed {
+public class CurrentWeatherEmbed {
     private static final String iconTemplate = "http://openweathermap.org/img/wn/$@2x.png";
     private static final String precipTemplate = "\namount in last hour:$\namount in last 3 hours:%";
     private static final String tempTemplate = "temp:$ \nfeels like:%\nmax temp:^\nmin temp:&\npressure:*\nhumidity:!";

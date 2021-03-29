@@ -1,4 +1,4 @@
-package com.alexcomeau.response;
+package com.alexcomeau.response.currentweather;
 
 public class Wind {
     private float speed;

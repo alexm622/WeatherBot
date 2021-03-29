@@ -1,7 +1,7 @@
-package com.alexcomeau;
+package com.alexcomeau.bot.commands;
 
+import com.alexcomeau.utils.Debug;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Random;

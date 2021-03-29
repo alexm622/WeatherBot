@@ -1,5 +1,8 @@
-package com.alexcomeau;
+package com.alexcomeau.bot;
 
+import com.alexcomeau.bot.commands.EasterEgg;
+import com.alexcomeau.Main;
+import com.alexcomeau.bot.commands.WeatherCommands;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

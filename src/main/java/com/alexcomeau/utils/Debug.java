@@ -1,4 +1,4 @@
-package com.alexcomeau;
+package com.alexcomeau.utils;
 
 import java.io.File;
 import java.io.FileWriter;
