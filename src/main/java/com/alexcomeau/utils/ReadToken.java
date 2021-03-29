@@ -42,5 +42,23 @@ public class ReadToken {
         return token;
     }
 
+    public static String GeoCodingToken(){
+        String tokenPath = "/tokens/geocoding.txt";
+        String token;
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(tokenPath));
+            token = br.readLine();
+        } catch (FileNotFoundException e) {
+            Debug.debug(e.toString(), true);
+            token = "0";
+            return token;
+        } catch (IOException e) {
+            Debug.debug(e.toString(), true);
+            token = "0";
+            return token;
+        }
+        return token;
+    }
+
 
 }
