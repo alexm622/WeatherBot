@@ -1,0 +1,79 @@
+{
+  "results" : [
+    {
+      "address_components" : [
+        {
+          "long_name" : "ste 229",
+          "short_name" : "ste 229",
+          "types" : [ "subpremise" ]
+        },
+        {
+          "long_name" : "3506b",
+          "short_name" : "3506b",
+          "types" : [ "street_number" ]
+        },
+        {
+          "long_name" : "West 8th Street",
+          "short_name" : "W 8th St",
+          "types" : [ "route" ]
+        },
+        {
+          "long_name" : "Koreatown",
+          "short_name" : "Koreatown",
+          "types" : [ "neighborhood", "political" ]
+        },
+        {
+          "long_name" : "Los Angeles",
+          "short_name" : "Los Angeles",
+          "types" : [ "locality", "political" ]
+        },
+        {
+          "long_name" : "Los Angeles County",
+          "short_name" : "Los Angeles County",
+          "types" : [ "administrative_area_level_2", "political" ]
+        },
+        {
+          "long_name" : "California",
+          "short_name" : "CA",
+          "types" : [ "administrative_area_level_1", "political" ]
+        },
+        {
+          "long_name" : "United States",
+          "short_name" : "US",
+          "types" : [ "country", "political" ]
+        },
+        {
+          "long_name" : "90005",
+          "short_name" : "90005",
+          "types" : [ "postal_code" ]
+        }
+      ],
+      "formatted_address" : "3506b W 8th St ste 229, Los Angeles, CA 90005, USA",
+      "geometry" : {
+        "location" : {
+          "lat" : 34.0572276,
+          "lng" : -118.3071972
+        },
+        "location_type" : "ROOFTOP",
+        "viewport" : {
+          "northeast" : {
+            "lat" : 34.05857658029149,
+            "lng" : -118.3058482197085
+          },
+          "southwest" : {
+            "lat" : 34.05587861970849,
+            "lng" : -118.3085461802915
+          }
+        }
+      },
+      "partial_match" : true,
+      "place_id" : "ChIJ09t5Y865woARM1owD0dW2sA",
+      "plus_code" : {
+        "compound_code" : "3M4V+V4 Los Angeles, CA, USA",
+        "global_code" : "85633M4V+V4"
+      },
+      "types" : [ "establishment", "point_of_interest" ]
+    }
+  ],
+  "status" : "OK"
+}
