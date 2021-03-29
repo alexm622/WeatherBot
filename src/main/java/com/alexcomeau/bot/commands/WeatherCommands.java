@@ -3,6 +3,7 @@ package com.alexcomeau.bot.commands;
 import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
 import com.alexcomeau.response.currentweather.Response;
 import com.alexcomeau.utils.ApiRequest;
+import com.alexcomeau.utils.api.CurrentWeather;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -43,7 +44,7 @@ public class WeatherCommands {
             //Debug.debug("cleaned " + city);
 
             //create the request while replaces blank spaces with "%20"
-            String request = ApiRequest.createRequest(city).replace(" ", "$").replace("$", "%20");
+            String request = CurrentWeather.currentWeatherRequest(city).replace(" ", "$").replace("$", "%20");
             //Debug.debug("got request request of " + request);
 
             //make the api request
@@ -58,7 +59,7 @@ public class WeatherCommands {
             //TODO make this print out an embedded and handle error messages
             channel.sendMessage(output) /* => RestAction<Message> */
                     .queue();
-            Response r = ApiRequest.jsonToObject(output);
+            Response r = CurrentWeather.currentWeatherAsObject(output);
             channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, city)).queue();
             return true;
 
