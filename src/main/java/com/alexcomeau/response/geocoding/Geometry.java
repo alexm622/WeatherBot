@@ -2,6 +2,9 @@ package com.alexcomeau.response.geocoding;
 
 public class Geometry {
     private Location location;
+
+
+    private Bounds bounds;
     private String location_type;
     private Viewport viewport;
 
@@ -28,4 +31,13 @@ public class Geometry {
     public void setViewport(Viewport viewport) {
         this.viewport = viewport;
     }
+
+    public Bounds getBounds() {
+        return bounds;
+    }
+
+    public void setBounds(Bounds bounds) {
+        this.bounds = bounds;
+    }
+
 }

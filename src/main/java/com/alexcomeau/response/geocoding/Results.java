@@ -1,13 +1,13 @@
 package com.alexcomeau.response.geocoding;
 
 public class Results {
-    private AddressComponents[] address_components;
+    private AddressComponent[] address_components;
 
-    public AddressComponents[] getAddress_components() {
+    public AddressComponent[] getAddress_components() {
         return address_components;
     }
 
-    public void setAddress_components(AddressComponents[] address_components) {
+    public void setAddress_components(AddressComponent[] address_components) {
         this.address_components = address_components;
     }
 

@@ -3,6 +3,8 @@ package com.alexcomeau.bot.embeds;
 import com.alexcomeau.response.currentweather.Rain;
 import com.alexcomeau.response.currentweather.Response;
 import com.alexcomeau.response.currentweather.Snow;
+import com.alexcomeau.response.geocoding.AddressComponent;
+import com.alexcomeau.response.geocoding.GeoCodingStruct;
 import com.alexcomeau.utils.Debug;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -10,7 +12,6 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.Date;
 
 public class CurrentWeatherEmbed {
@@ -18,7 +19,7 @@ public class CurrentWeatherEmbed {
     private static final String precipTemplate = "\namount in last hour:$\namount in last 3 hours:%";
     private static final String tempTemplate = "temp:$ \nfeels like:%\nmax temp:^\nmin temp:&\npressure:*\nhumidity:!";
 
-    public static MessageEmbed buildEmbeded(Response w, String city){
+    public static MessageEmbed buildEmbeded(Response w, GeoCodingStruct geo){
         String precip;
         String temp;
         EmbedBuilder eb = new EmbedBuilder();
@@ -28,6 +29,19 @@ public class CurrentWeatherEmbed {
         //generate temp
         temp = generateTemp(w);
 
+        String city = "error";
+
+        for(AddressComponent ac : geo.getResults()[0].getAddress_components()){
+            for(String s : ac.getTypes()){
+                if(s.equals("locality")){
+                    city = ac.getLong_name();
+                    break;
+                }
+            }
+            if(!city.equals("error")){
+                break;
+            }
+        }
 
 
         eb.setTitle("Your current Weather")

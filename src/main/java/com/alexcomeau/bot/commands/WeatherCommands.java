@@ -2,8 +2,11 @@ package com.alexcomeau.bot.commands;
 
 import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
 import com.alexcomeau.response.currentweather.Response;
+import com.alexcomeau.response.geocoding.GeoCodingStruct;
 import com.alexcomeau.utils.ApiRequest;
+import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.api.CurrentWeather;
+import com.alexcomeau.utils.api.GeoCoding;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -39,18 +42,27 @@ public class WeatherCommands {
            // Debug.debug("got city of " + city);
 
             //clean the request, if it contains special characters we remove it
-            city= ApiRequest.cleanRequest(city);
 
-            //Debug.debug("cleaned " + city);
+            GeoCodingStruct geoLocate;
+
+            String geoRequest = GeoCoding.geoCodingRequest(city);
+            String json = "{\"status\":\"failed\"}";
+            try {
+                json = ApiRequest.makeRequest(geoRequest);
+            }catch(Exception e){
+                Debug.debug(e.getClass().toString(), true);
+            }
+            Debug.debug("the json is: " + json);
+            geoLocate = GeoCoding.jsonToObject(json);
 
             //create the request while replaces blank spaces with "%20"
-            String request = CurrentWeather.currentWeatherRequest(city).replace(" ", "$").replace("$", "%20");
-            //Debug.debug("got request request of " + request);
+            String currentRequest = CurrentWeather.currentWeatherRequest(geoLocate);
+
 
             //make the api request
-            String output = ApiRequest.makeRequest(request);
+            String output = ApiRequest.makeRequest(currentRequest);
 
-            //Debug.debug("got request output of " + request);
+
 
             //get the channel
             MessageChannel channel = event.getChannel();
@@ -60,7 +72,7 @@ public class WeatherCommands {
             channel.sendMessage(output) /* => RestAction<Message> */
                     .queue();
             Response r = CurrentWeather.currentWeatherAsObject(output);
-            channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, city)).queue();
+            channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, geoLocate)).queue();
             return true;
 
 

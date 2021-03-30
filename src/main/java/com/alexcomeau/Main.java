@@ -5,6 +5,7 @@ import com.alexcomeau.utils.ApiRequest;
 import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.ReadToken;
 import com.alexcomeau.utils.api.GeoCoding;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -16,6 +17,7 @@ public class Main {
     public static final String prefix = "&"; // TODO this will later be changeable by the user
 
     public static void main(String[] args) throws LoginException {
+
         JDABuilder.createLight(ReadToken.DiscordToken(), GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
                 .setActivity(Activity.playing("Poop Fart"))
                 .addEventListeners(new Bot())
@@ -30,8 +32,12 @@ public class Main {
         }catch(Exception e){
             Debug.debug(e.getClass().toString(), true);
         }
-        Debug.debug("the json is: " + json);*/
-
+        Debug.debug("the json is: " + json);
+        try {
+            GeoCoding.jsonToObject(json);
+        }catch(Exception e){
+            e.printStackTrace();
+        }*/
 
 
     }

@@ -1,6 +1,6 @@
 package com.alexcomeau.response.geocoding;
 
-public class AddressComponents {
+public class AddressComponent {
     public String getLong_name() {
         return long_name;
     }

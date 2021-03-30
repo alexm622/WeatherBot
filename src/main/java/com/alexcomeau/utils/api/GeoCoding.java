@@ -11,7 +11,7 @@ public class GeoCoding {
 
     public static String geoCodingRequest(String city){
         final String template = "https://maps.googleapis.com/maps/api/geocode/json?address=$&key=";
-        city = ApiRequest.cleanRequest(city);
+        city = ApiRequest.cleanRequest(city).trim();
         city = city.replace(" ", "$").replace("$", "%20");
         return template.replace("$", city) + ReadToken.GeoCodingToken();
     }
