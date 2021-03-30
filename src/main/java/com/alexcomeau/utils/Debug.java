@@ -10,11 +10,12 @@ import java.util.Date;
 
 public class Debug{
     private static final String logs = "logs/";
+    private static final Date date = new Date();
     public static void debug(Object msg, boolean err) {
         try {
             //get the date for the name of the file
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-            Date date = new Date();
+
             //new output writer into the new log file
             PrintWriter out = new PrintWriter(new FileWriter(
                      logs + dateFormat.format(date) + ".log", true));
@@ -28,7 +29,7 @@ public class Debug{
             //the line number of what called debug
             int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
             //and the current date
-            String temp = dateFormat.format(date);
+            String temp = dateFormat.format(new Date());
             //add the classname, method name, line number and msg
             temp += className;
             temp += "." + methodName + "():";
@@ -65,7 +66,7 @@ public class Debug{
     public static void debug(Object msg){
             try {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-                Date date = new Date();
+
                 PrintWriter out = new PrintWriter(new FileWriter(
                         logs + dateFormat.format(date) + ".log", true));
                 dateFormat = new SimpleDateFormat("[yyyy:MM:dd HH:mm:ss] -- ");
@@ -73,7 +74,7 @@ public class Debug{
                 String className = fullClassName.substring(fullClassName.lastIndexOf(".") + 1);
                 String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
                 int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
-                String temp = dateFormat.format(date);
+                String temp = dateFormat.format(new Date());
                 temp += className;
                 temp += "." + methodName + "():";
                 temp += lineNumber + ": ";
