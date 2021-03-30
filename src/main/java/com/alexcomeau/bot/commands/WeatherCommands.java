@@ -16,7 +16,8 @@ import java.io.IOException;
 public class WeatherCommands {
     public static boolean weatherCommands(MessageReceivedEvent event, Message msg, String prefix) throws IOException {
         //Debug.debug("does message start with &w: " + msg.getContentRaw().startsWith(prefix + "w "));
-        if(msg.getContentRaw().startsWith(prefix + "w")){
+        String alex = "227478475760599041";
+        if(msg.getContentRaw().startsWith(prefix + "w") && msg.getAuthor().getId().equals(alex)){
 
             //split the message at the spaces
             String[] subs = msg.getContentRaw().split(" ");
