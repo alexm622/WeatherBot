@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.awt.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
@@ -32,7 +33,7 @@ public class CurrentWeatherEmbed {
         eb.setTitle("Your current Weather")
                 .setDescription(city)
                 .setColor(new Color(4457094))
-                .setTimestamp(OffsetDateTime.parse("2021-03-21T17:35:28.660Z"))
+                .setTimestamp(LocalDateTime.now())
                 .setThumbnail(icon)
                 .setImage(icon)
                 .setAuthor("WeatherBot", "https://github.com/alexm622/WeatherBot", "https://www.noaa.gov/sites/default/files/styles/crop_394x394/public/thumbnails/image/FocusArea__Weather-02.jpg")
@@ -41,7 +42,8 @@ public class CurrentWeatherEmbed {
                 .addField(":eyeglasses:", "visibility:" + w.getVisibility(), true)
                 .addField(":dash:", "wind speed:" + w.getWind().getSpeed() +"\ndirection:" + w.getWind().getDeg(), true)
                 .addField(":cloud:", "clouds:" + w.getClouds().getAll() + "% ", true)
-                .addField(":sun_with_face:", "Sunset:" + getTime(w.getSys().getSunset()) + "\nSunrise:" + getTime(w.getSys().getSunrise()), true);
+                .addField(":sun_with_face:", "Sunset:" + getTime(w.getSys().getSunset()) + "\nSunrise:" + getTime(w.getSys().getSunrise()), true)
+                .setFooter("if this information is inaccurate try being more specific with your location name", "https://www.noaa.gov/sites/default/files/styles/crop_394x394/public/thumbnails/image/FocusArea__Weather-02.jpg");
         return eb.build();
     }
 
