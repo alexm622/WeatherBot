@@ -107,6 +107,9 @@ public class WeatherCommands {
         switch(whatType){
             case DAILY:
                 dailyWeather(event, msg, w);
+                break;
+            default:
+                break;
         }
 
         return true;

@@ -90,11 +90,12 @@ public class CurrentWeatherEmbed {
             snow=false;
         }
 
+        /*
         if(rain){
             precip = precipTemplate.replace("$ ", Float.toString(w.getRain().getOne())).replace("%", Float.toString(w.getRain().getThree()));
         }else if(snow){
             precip = precipTemplate.replace("$ ", Float.toString(w.getSnow().getOne())).replace("%", Float.toString((w.getSnow().getThree())));
-        }
+        }*/
 
 
         Debug.debug("precip is " + precip);
