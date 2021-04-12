@@ -12,6 +12,9 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class WeatherCommands {
     public static boolean weatherCommands(MessageReceivedEvent event, Message msg, String prefix) throws IOException {
@@ -82,5 +85,8 @@ public class WeatherCommands {
         }
         return false;
     }
+
+
+
 
 }
