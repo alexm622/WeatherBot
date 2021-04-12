@@ -1,14 +1,12 @@
 package com.alexcomeau.bot;
 
-import com.alexcomeau.bot.commands.EasterEgg;
+import com.alexcomeau.bot.commands.easterEggs.EasterEgg;
 import com.alexcomeau.Main;
-import com.alexcomeau.bot.commands.WeatherCommands;
+import com.alexcomeau.bot.commands.weather.WeatherCommands;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-
-import java.io.IOException;
 
 public class Bot extends ListenerAdapter {
     @Override
@@ -32,7 +30,7 @@ public class Bot extends ListenerAdapter {
             if(WeatherCommands.weatherCommands(event, msg, prefix)){
                 return;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

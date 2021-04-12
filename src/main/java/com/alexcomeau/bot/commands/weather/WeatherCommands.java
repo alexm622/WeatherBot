@@ -1,9 +1,12 @@
-package com.alexcomeau.bot.commands;
+package com.alexcomeau.bot.commands.weather;
 
+import com.alexcomeau.bot.commands.CommandStruct;
+import com.alexcomeau.bot.commands.CommandType;
 import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
 import com.alexcomeau.response.currentweather.Response;
 import com.alexcomeau.response.geocoding.GeoCodingStruct;
 import com.alexcomeau.utils.ApiRequest;
+import com.alexcomeau.utils.CommandParser;
 import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.api.CurrentWeather;
 import com.alexcomeau.utils.api.GeoCoding;
@@ -12,15 +15,12 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class WeatherCommands {
-    public static boolean weatherCommands(MessageReceivedEvent event, Message msg, String prefix) throws IOException {
+    public static boolean dailyWeather(MessageReceivedEvent event, Message msg, WeatherCommandStruct cs) throws IOException {
         //Debug.debug("does message start with &w: " + msg.getContentRaw().startsWith(prefix + "w "));
         String alex = "227478475760599041";
-        if(msg.getContentRaw().startsWith(prefix + "w") && msg.getAuthor().getId().equals(alex)){
+        if(msg.getAuthor().getId().equals(alex)){
 
             //split the message at the spaces
             String[] subs = msg.getContentRaw().split(" ");
@@ -87,6 +87,30 @@ public class WeatherCommands {
     }
 
 
+    public static boolean weatherCommands(MessageReceivedEvent event, Message msg, String prefix) throws IOException {
+        String message = msg.getContentRaw();
+        CommandStruct cs = CommandParser.parseCommand(message);
+        if(!(cs.command == CommandType.WEATHER)){
+            return false;
+        }
+        WeatherArg whatType = WeatherArg.WEEKLY, whatUnit = WeatherArg.IMPERIAL;
+        WeatherCommandStruct w = (new WeatherCommandStruct()).fromCommandStruct(cs);
+
+        for(WeatherArg wArg : w.args){
+            if(wArg.getType() == WeatherArgType.UNITS){
+                whatUnit = wArg;
+            }else if(wArg.getType() == WeatherArgType.SUBCOMMAND){
+                whatType = wArg;
+            }
+        }
+
+        switch(whatType){
+            case DAILY:
+                dailyWeather(event, msg, w);
+        }
+
+        return true;
+    }
 
 
 }

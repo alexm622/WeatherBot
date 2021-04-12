@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class CommandParser {
-    public static CommandStruct parseArgs(String command){
+    public static CommandStruct parseCommand(String command){
         CommandStruct c = new CommandStruct();
-        HashMap<String, String> subs = new HashMap<>();
 
-        c.args = new String[]{"invalid"};
+
+        c.args = new Character[]{'i'};
         c.command = CommandType.UNKNOWN;
         c.input = "invalid";
 
@@ -29,35 +29,33 @@ public class CommandParser {
 
         c.command = matchCommandEnums(split[0]);
 
-        if(split.length >= 2){
-            String temp = split[1];
-            if(temp.startsWith("-")){
-                temp.replaceAll("-", "");
-                ArrayList<String> args = new ArrayList<>();
-                for(Character character : temp.toCharArray()){
-                    args.add(character.toString());
-                }
-                c.args = args.toArray(new String[args.size()]);
-            }else{
-                StringBuilder sb = new StringBuilder();
-                for(String s : Arrays.copyOfRange(split, 1, split.length)){
-                    sb.append(s + " ");
-                }
-                c.input = sb.toString().trim();
+        String temp = split[1];
+        if(temp.startsWith("-")){
+            temp = temp.replaceAll("-", "");
+            ArrayList<Character> args = new ArrayList<>();
+            for(char character : temp.toCharArray()){
+                args.add(character);
             }
-            if(split.length == 2){
-                return c;
+            c.args = args.toArray(new Character[args.size()]);
+        }else{
+            StringBuilder sb = new StringBuilder();
+            for(String s : Arrays.copyOfRange(split, 1, split.length)){
+                sb.append(s + " ");
             }
+            c.input = sb.toString().trim();
+        }
+        if(split.length == 2){
+            return c;
+        }
 
-            if(c.args.equals(new String[]{"invalid"})){
-                return c;
-            }else{
-                StringBuilder sb = new StringBuilder();
-                for(String s : Arrays.copyOfRange(split, 2, split.length)){
-                    sb.append(s + " ");
-                }
-                c.input = sb.toString().trim();
+        if(c.args.equals(new String[]{"invalid"})){
+            return c;
+        }else{
+            StringBuilder sb = new StringBuilder();
+            for(String s : Arrays.copyOfRange(split, 2, split.length)){
+                sb.append(s + " ");
             }
+            c.input = sb.toString().trim();
         }
         return c;
     }

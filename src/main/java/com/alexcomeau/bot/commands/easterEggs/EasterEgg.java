@@ -1,9 +1,12 @@
-package com.alexcomeau.bot.commands;
+package com.alexcomeau.bot.commands.easterEggs;
 
+import com.alexcomeau.bot.commands.CommandType;
+import com.alexcomeau.utils.CommandParser;
 import com.alexcomeau.utils.Debug;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class EasterEgg {
@@ -56,7 +59,7 @@ public class EasterEgg {
             }
         }
 
-        if (msg.getContentRaw().equals(prefix + "goose") || msg.getContentRaw().startsWith("&goose"))
+        if (CommandParser.parseCommand(msg.getContentRaw().toLowerCase(Locale.ROOT)).command == CommandType.GOOSE)
         {
             if(msg.getAuthor().getId().equals(alex)){
                 msg.delete().queue();
