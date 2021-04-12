@@ -1,6 +1,6 @@
 package com.alexcomeau.response.currentweather;
 
-public class Response {
+public class CurrentWeatherResponse {
     private Coord coord;
     private Weather[] weather;
     private String base;

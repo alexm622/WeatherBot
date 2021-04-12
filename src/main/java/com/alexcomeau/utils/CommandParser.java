@@ -16,6 +16,10 @@ public class CommandParser {
         c.command = CommandType.UNKNOWN;
         c.input = "invalid";
 
+        if(!command.startsWith("&")){
+            return c;
+        }
+
         String[] split = command.split(" ");
 
         if(split.length < 1){

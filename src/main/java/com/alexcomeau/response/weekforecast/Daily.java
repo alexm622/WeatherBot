@@ -6,7 +6,7 @@ public class Daily {
     private long dt;
     private long sunrise;
     private long sunset;
-    private Temp t;
+    private Temp temp;
     private FeelsLike feels_like;
     private int pressure;
     private int humidity;
@@ -17,6 +17,18 @@ public class Daily {
     private int clouds;
     private int pop;
     private float rain;
+    private float snow;
+    private float uvi;
+
+    public float getSnow() {
+        return snow;
+    }
+
+    public void setSnow(float snow) {
+        this.snow = snow;
+    }
+
+
 
     public long getDt() {
         return dt;
@@ -42,12 +54,12 @@ public class Daily {
         this.sunset = sunset;
     }
 
-    public Temp getT() {
-        return t;
+    public Temp getTemp() {
+        return temp;
     }
 
-    public void setT(Temp t) {
-        this.t = t;
+    public void setTemp(Temp temp) {
+        this.temp = temp;
     }
 
     public FeelsLike getFeels_like() {
@@ -138,5 +150,5 @@ public class Daily {
         this.uvi = uvi;
     }
 
-    private float uvi;
+
 }

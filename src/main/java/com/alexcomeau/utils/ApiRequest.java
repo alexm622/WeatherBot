@@ -1,11 +1,5 @@
 package com.alexcomeau.utils;
 
-import com.alexcomeau.response.currentweather.Response;
-import com.alexcomeau.utils.Debug;
-import com.alexcomeau.utils.ReadToken;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;

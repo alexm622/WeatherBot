@@ -1,6 +1,5 @@
 package com.alexcomeau.utils.api;
 
-import com.alexcomeau.response.currentweather.Response;
 import com.alexcomeau.response.geocoding.GeoCodingStruct;
 import com.alexcomeau.utils.ApiRequest;
 import com.alexcomeau.utils.ReadToken;

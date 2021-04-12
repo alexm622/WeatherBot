@@ -4,8 +4,8 @@ public enum WeatherArg {
     DAILY('d', WeatherArgType.SUBCOMMAND),
     WEEKLY('d', WeatherArgType.SUBCOMMAND),
     IMPERIAL('f', WeatherArgType.UNITS),
-    CELSIUS('c', WeatherArgType.UNITS),
-    KELVIN('k', WeatherArgType.UNITS),
+    METRIC('c', WeatherArgType.UNITS),
+    SCIENTIFIC('k', WeatherArgType.UNITS),
     NONE('i', WeatherArgType.NOTHING),
     UNKNOWN(' ', WeatherArgType.UNKNOWN);
 

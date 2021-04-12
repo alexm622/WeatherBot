@@ -1,11 +1,13 @@
 package com.alexcomeau.bot.embeds;
 
+import com.alexcomeau.bot.commands.weather.WeatherArg;
 import com.alexcomeau.response.currentweather.Rain;
-import com.alexcomeau.response.currentweather.Response;
+import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
 import com.alexcomeau.response.currentweather.Snow;
 import com.alexcomeau.response.geocoding.AddressComponent;
 import com.alexcomeau.response.geocoding.GeoCodingStruct;
 import com.alexcomeau.utils.Debug;
+import com.alexcomeau.utils.UnitConverter;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
@@ -19,7 +21,7 @@ public class CurrentWeatherEmbed {
     private static final String precipTemplate = "\namount in last hour:$\namount in last 3 hours:%";
     private static final String tempTemplate = "temp:$ \nfeels like:%\nmax temp:^\nmin temp:&\npressure:*\nhumidity:!";
 
-    public static MessageEmbed buildEmbeded(Response w, GeoCodingStruct geo){
+    public static MessageEmbed buildEmbeded(CurrentWeatherResponse w, GeoCodingStruct geo, WeatherArg unit){
         String precip;
         String temp;
         EmbedBuilder eb = new EmbedBuilder();
@@ -27,7 +29,7 @@ public class CurrentWeatherEmbed {
 
         precip = generatePrecip(w);
         //generate temp
-        temp = generateTemp(w);
+        temp = generateTemp(w, unit);
 
         String city = "error";
 
@@ -61,16 +63,16 @@ public class CurrentWeatherEmbed {
         return eb.build();
     }
 
-    private static String generateTemp(Response w) {
+    private static String generateTemp(CurrentWeatherResponse w, WeatherArg unit) {
         return tempTemplate.replace("$", Float.toString(w.getMain().getTemp()))
-                .replace("%", Float.toString(w.getMain().getFeels_like()))
-                .replace("^", Float.toString(w.getMain().getTemp_max()))
-                .replace("&", Float.toString(w.getMain().getTemp_min()))
-                .replace("*", Float.toString(w.getMain().getPressure()))
-                .replace("!", Float.toString(w.getMain().getHumidity())); //TODO this needs sea level/ground level
+                .replace("%", Float.toString(UnitConverter.convertTemp(w.getMain().getFeels_like(), unit)) + " " + unit.getLetter())
+                .replace("^", Float.toString(UnitConverter.convertTemp(w.getMain().getTemp_max(), unit)) + " " + unit.getLetter())
+                .replace("&", Float.toString(UnitConverter.convertTemp(w.getMain().getTemp_min(), unit)) + " " + unit.getLetter())
+                .replace("*", Float.toString(UnitConverter.convertTemp(w.getMain().getPressure(), unit)) + " " + unit.getLetter())
+                .replace("!", Float.toString(UnitConverter.convertTemp(w.getMain().getHumidity(), unit)) + " " + unit.getLetter()); //TODO this needs sea level/ground level
     }
 
-    private static String generatePrecip(Response w) {
+    private static String generatePrecip(CurrentWeatherResponse w) {
         //generate precipitation
         String precip = "";
         boolean rain = true;
