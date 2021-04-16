@@ -3,8 +3,8 @@ package com.alexcomeau.bot.commands;
 public enum CommandType {
     WEATHER("&w"),
     GOOSE("&goose"),
-    UNKNOWN(null),
-    RAT("&rat");
+    RAT("&rat"),
+    UNKNOWN(""),;
 
     private String prefix;
     CommandType(String prefix){

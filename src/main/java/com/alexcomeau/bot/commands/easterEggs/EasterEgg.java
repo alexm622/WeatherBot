@@ -69,9 +69,6 @@ public class EasterEgg {
         }
         if (CommandParser.parseCommand(msg.getContentRaw().toLowerCase(Locale.ROOT)).command == CommandType.RAT)
         {
-            if(msg.getAuthor().getId().equals(alex)){
-                msg.delete().queue();
-            }
             event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/501416331179196430/832449822699028530/ed3f6c77892c7646398fc3b80bc4f78c.png").queue();
             return true;
         }
