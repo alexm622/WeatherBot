@@ -1,6 +1,7 @@
 package com.alexcomeau.sql;
 
 public class ServerSettings {
+    private String server;
     private String prefix;
     private String channel;
     private String role;
@@ -36,5 +37,13 @@ public class ServerSettings {
 
     public void setAdmin(String admin) {
         this.admin = admin;
+    }
+
+    public String getServer() {
+        return server;
+    }
+
+    public void setServer(String server) {
+        this.server = server;
     }
 }
