@@ -5,14 +5,14 @@ import com.alexcomeau.bot.commands.CommandType;
 import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
 import com.alexcomeau.bot.embeds.DailyWeatherEmbed;
 import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
-import com.alexcomeau.response.geocoding.GeoCodingStruct;
+import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
 import com.alexcomeau.response.weekforecast.Weekly;
 import com.alexcomeau.utils.ApiRequest;
 import com.alexcomeau.utils.CommandParser;
 import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.api.CurrentWeather;
 import com.alexcomeau.utils.api.DailyWeather;
-import com.alexcomeau.utils.api.GeoCoding;
+import com.alexcomeau.utils.api.GoogleGeocode;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -38,9 +38,9 @@ public class WeatherCommands {
 
             //clean the request, if it contains special characters we remove it
 
-            GeoCodingStruct geoLocate;
+            GoogleGeocodingStruct geoLocate;
 
-            String geoRequest = GeoCoding.geoCodingRequest(cs.input);
+            String geoRequest = GoogleGeocode.googleGeocodingRequest(cs.input);
             String json = "{\"status\":\"failed\"}";
             try {
                 json = ApiRequest.makeRequest(geoRequest);
@@ -48,7 +48,7 @@ public class WeatherCommands {
                 Debug.debug(e.getClass().toString(), true);
             }
             Debug.debug("the json is: " + json);
-            geoLocate = GeoCoding.jsonToObject(json);
+            geoLocate = GoogleGeocode.jsonToObject(json);
 
             //create the request while replaces blank spaces with "%20"
             String currentRequest = CurrentWeather.currentWeatherRequest(geoLocate);
@@ -92,9 +92,9 @@ public class WeatherCommands {
 
             //clean the request, if it contains special characters we remove it
 
-            GeoCodingStruct geoLocate;
+            GoogleGeocodingStruct geoLocate;
 
-            String geoRequest = GeoCoding.geoCodingRequest(cs.input);
+            String geoRequest = GoogleGeocode.googleGeocodingRequest(cs.input);
             String json = "{\"status\":\"failed\"}";
             try {
                 json = ApiRequest.makeRequest(geoRequest);
@@ -102,7 +102,7 @@ public class WeatherCommands {
                 Debug.debug(e.getClass().toString(), true);
             }
             Debug.debug("the json is: " + json);
-            geoLocate = GeoCoding.jsonToObject(json);
+            geoLocate = GoogleGeocode.jsonToObject(json);
 
             //create the request while replaces blank spaces with "%20"
             String currentRequest = DailyWeather.dailyWeatherRequest(geoLocate);

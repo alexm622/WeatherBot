@@ -1,11 +1,7 @@
 package com.alexcomeau;
 
 import com.alexcomeau.bot.Bot;
-import com.alexcomeau.utils.ApiRequest;
-import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.ReadToken;
-import com.alexcomeau.utils.api.GeoCoding;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;

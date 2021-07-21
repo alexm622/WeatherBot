@@ -1,7 +1,7 @@
 package com.alexcomeau.utils.api;
 
 import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
-import com.alexcomeau.response.geocoding.GeoCodingStruct;
+import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
 import com.alexcomeau.response.weekforecast.Weekly;
 import com.alexcomeau.utils.ReadToken;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DailyWeather {
     //format the input into a city request
-    public static String dailyWeatherRequest(GeoCodingStruct city) {
+    public static String dailyWeatherRequest(GoogleGeocodingStruct city) {
         //the template for the request
         final String template = "http://api.openweathermap.org/data/2.5/onecall?lat=$&lon=#&exclude=current,minutely,hourly,alerts&appid=";
 

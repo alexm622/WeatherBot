@@ -1,4 +1,4 @@
-package com.alexcomeau.response.geocoding;
+package com.alexcomeau.response.googleGeocoding;
 
 public class Location {
     private float lat;

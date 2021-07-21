@@ -1,6 +1,6 @@
-package com.alexcomeau.response.geocoding;
+package com.alexcomeau.response.googleGeocoding;
 
-public class Viewport {
+public class Bounds {
     private Location northeast;
     private Location southwest;
 

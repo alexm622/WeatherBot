@@ -4,8 +4,8 @@ import com.alexcomeau.bot.commands.weather.WeatherArg;
 import com.alexcomeau.response.currentweather.Rain;
 import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
 import com.alexcomeau.response.currentweather.Snow;
-import com.alexcomeau.response.geocoding.AddressComponent;
-import com.alexcomeau.response.geocoding.GeoCodingStruct;
+import com.alexcomeau.response.googleGeocoding.AddressComponent;
+import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
 import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.UnitConverter;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -21,7 +21,7 @@ public class CurrentWeatherEmbed {
     private static final String precipTemplate = "\namount in last hour:$\namount in last 3 hours:%";
     private static final String tempTemplate = "temp:$ \nfeels like:%\nmax temp:^\nmin temp:&\npressure:*\nhumidity:!";
 
-    public static MessageEmbed buildEmbeded(CurrentWeatherResponse w, GeoCodingStruct geo, WeatherArg unit){
+    public static MessageEmbed buildEmbeded(CurrentWeatherResponse w, GoogleGeocodingStruct geo, WeatherArg unit){
         String precip;
         String temp;
         EmbedBuilder eb = new EmbedBuilder();

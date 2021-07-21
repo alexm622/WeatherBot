@@ -1,8 +1,8 @@
 package com.alexcomeau.bot.embeds;
 
 import com.alexcomeau.bot.commands.weather.WeatherArg;
-import com.alexcomeau.response.geocoding.AddressComponent;
-import com.alexcomeau.response.geocoding.GeoCodingStruct;
+import com.alexcomeau.response.googleGeocoding.AddressComponent;
+import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
 import com.alexcomeau.response.weekforecast.Daily;
 import com.alexcomeau.response.weekforecast.Weekly;
 import com.alexcomeau.utils.Debug;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class DailyWeatherEmbed {
-    public static MessageEmbed buildEmbed(Weekly w, GeoCodingStruct geo, WeatherArg unit){
+    public static MessageEmbed buildEmbed(Weekly w, GoogleGeocodingStruct geo, WeatherArg unit){
         EmbedBuilder eb = new EmbedBuilder();
         String city = "error";
         for(AddressComponent ac : geo.getResults()[0].getAddress_components()){

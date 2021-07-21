@@ -1,4 +1,4 @@
-package com.alexcomeau.response.geocoding;
+package com.alexcomeau.response.googleGeocoding;
 
 public class PlusCode {
     private String compound_code;

@@ -1,6 +1,6 @@
-package com.alexcomeau.response.geocoding;
+package com.alexcomeau.response.googleGeocoding;
 
-public class GeoCodingStruct {
+public class GoogleGeocodingStruct {
     private Results[] results;
     private String status;
 

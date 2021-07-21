@@ -14,6 +14,7 @@ public class ReadToken {
         try{
             BufferedReader br = new BufferedReader(new FileReader(tokenPath));
             token = br.readLine();
+            br.close();
         } catch (IOException e) {
             Debug.debug(e.toString(), true);
             token = "0";
@@ -28,6 +29,7 @@ public class ReadToken {
         try{
             BufferedReader br = new BufferedReader(new FileReader(tokenPath));
             token = br.readLine();
+            br.close();
         } catch (IOException e) {
             Debug.debug(e.toString(), true);
             token = "0";
@@ -42,6 +44,7 @@ public class ReadToken {
         try{
             BufferedReader br = new BufferedReader(new FileReader(tokenPath));
             token = br.readLine();
+            br.close();
         } catch (IOException e) {
             Debug.debug(e.toString(), true);
             token = "0";
@@ -61,6 +64,7 @@ public class ReadToken {
             logDets.setIp(fields[0]);
             logDets.setUsername(fields[1]);
             logDets.setPassword(fields[2]);
+            br.close();
         } catch (Exception e) {
             logDets.setIp("127.0.0.1");
             logDets.setUsername("none");
