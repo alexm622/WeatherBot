@@ -1,0 +1,324 @@
+{
+    "summary": {
+      "query": "4 north 2nd street san jose",
+      "queryType": "NON_NEAR",
+      "queryTime": 152,
+      "numResults": 8,
+      "offset": 0,
+      "totalResults": 8,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 37.337,
+        "lon": -121.89
+      }
+    },
+    "results": [
+      {
+        "type": "Point Address",
+        "id": "US/PAD/p0/2204850",
+        "score": 15.149764061,
+        "dist": 76.18137368760367,
+        "address": {
+          "streetNumber": "4",
+          "streetName": "North 2nd Street",
+          "municipalitySubdivision": "Downtown San Jose",
+          "municipality": "San Jose",
+          "countrySecondarySubdivision": "Santa Clara",
+          "countrySubdivision": "CA",
+          "countrySubdivisionName": "California",
+          "postalCode": "95113",
+          "extendedPostalCode": "95113-1204",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "4 North 2nd Street, San Jose, CA 95113",
+          "localName": "San Jose"
+        },
+        "position": {
+          "lat": 37.33767,
+          "lon": -121.88982
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 37.33857,
+            "lon": -121.89095
+          },
+          "btmRightPoint": {
+            "lat": 37.33677,
+            "lon": -121.88869
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 37.33752,
+              "lon": -121.89014
+            }
+          }
+        ]
+      },
+      {
+        "type": "Address Range",
+        "id": "US/ADDR/p2/303741",
+        "score": 11.5752868652,
+        "dist": 327.8237410267347,
+        "address": {
+          "streetNumber": "4",
+          "streetName": "North San Pedro Street",
+          "municipalitySubdivision": "Downtown San Jose",
+          "municipality": "San Jose",
+          "countrySecondarySubdivision": "Santa Clara",
+          "countrySubdivision": "CA",
+          "countrySubdivisionName": "California",
+          "postalCode": "95110",
+          "extendedPostalCode": "95110-2413",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "4 North San Pedro Street, San Jose, CA 95110",
+          "localName": "San Jose"
+        },
+        "position": {
+          "lat": 37.33515,
+          "lon": -121.89285
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 37.33616,
+            "lon": -121.89368
+          },
+          "btmRightPoint": {
+            "lat": 37.33508,
+            "lon": -121.89286
+          }
+        },
+        "addressRanges": {
+          "rangeRight": "2 - 46",
+          "from": {
+            "lat": 37.33508,
+            "lon": -121.89286
+          },
+          "to": {
+            "lat": 37.33616,
+            "lon": -121.89368
+          }
+        }
+      },
+      {
+        "type": "Cross Street",
+        "id": "US/XSTR/p1/1392753",
+        "score": 11.1575307846,
+        "dist": 57.497781759625816,
+        "address": {
+          "streetName": "South 2nd Street & North 2nd Street",
+          "municipalitySubdivision": "Downtown San Jose",
+          "municipality": "San Jose",
+          "countrySecondarySubdivision": "Santa Clara",
+          "countrySubdivision": "CA",
+          "countrySubdivisionName": "California",
+          "postalCode": "95113",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "South 2nd Street & North 2nd Street, San Jose, CA 95113",
+          "localName": "San Jose"
+        },
+        "position": {
+          "lat": 37.33666,
+          "lon": -121.88951
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 37.33756,
+            "lon": -121.89064
+          },
+          "btmRightPoint": {
+            "lat": 37.33576,
+            "lon": -121.88838
+          }
+        }
+      },
+      {
+        "type": "Street",
+        "id": "US/STR/p0/708191",
+        "score": 10.8918867111,
+        "dist": 2800802.9304962,
+        "address": {
+          "streetName": "North 2nd Street",
+          "municipality": "San Jose",
+          "countrySecondarySubdivision": "Mason",
+          "countrySubdivision": "IL",
+          "countrySubdivisionName": "Illinois",
+          "postalCode": "62682",
+          "extendedPostalCode": "62682-9776",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "North 2nd Street, San Jose, IL 62682",
+          "localName": "San Jose"
+        },
+        "position": {
+          "lat": 40.30655,
+          "lon": -89.60401
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 40.30757,
+            "lon": -89.60401
+          },
+          "btmRightPoint": {
+            "lat": 40.30556,
+            "lon": -89.60399
+          }
+        }
+      },
+      {
+        "type": "Address Range",
+        "id": "US/ADDR/p1/6167137",
+        "score": 9.9869508743,
+        "dist": 2428401.7267527794,
+        "address": {
+          "streetNumber": "4",
+          "streetName": "North San Jose Street",
+          "municipality": "Hearne",
+          "countrySecondarySubdivision": "Robertson",
+          "countrySubdivision": "TX",
+          "countrySubdivisionName": "Texas",
+          "postalCode": "77859",
+          "extendedPostalCode": "77859-2243",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "4 North San Jose Street, Hearne, TX 77859",
+          "localName": "Hearne"
+        },
+        "position": {
+          "lat": 30.88452,
+          "lon": -96.59254
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 30.88532,
+            "lon": -96.59307
+          },
+          "btmRightPoint": {
+            "lat": 30.88453,
+            "lon": -96.59249
+          }
+        },
+        "addressRanges": {
+          "rangeLeft": "2 - 198",
+          "from": {
+            "lat": 30.88453,
+            "lon": -96.59249
+          },
+          "to": {
+            "lat": 30.88532,
+            "lon": -96.59307
+          }
+        }
+      },
+      {
+        "type": "Cross Street",
+        "id": "US/XSTR/p3/1473272",
+        "score": 9.610414505,
+        "dist": 196821.67216665097,
+        "address": {
+          "streetName": "North 2nd Street & East San Jose Avenue",
+          "municipality": "Fresno",
+          "countrySecondarySubdivision": "Fresno",
+          "countrySubdivision": "CA",
+          "countrySubdivisionName": "California",
+          "postalCode": "93710",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "North 2nd Street & East San Jose Avenue, Fresno, CA 93710",
+          "localName": "Fresno"
+        },
+        "position": {
+          "lat": 36.81217,
+          "lon": -119.77117
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 36.81307,
+            "lon": -119.77229
+          },
+          "btmRightPoint": {
+            "lat": 36.81127,
+            "lon": -119.77005
+          }
+        }
+      },
+      {
+        "type": "Cross Street",
+        "id": "US/XSTR/p2/1861949",
+        "score": 9.5987968445,
+        "dist": 2082671.027252848,
+        "address": {
+          "streetName": "North 2nd Street & North San Jose Drive",
+          "municipalitySubdivision": "Westwood Richland",
+          "municipality": "Abilene",
+          "countrySecondarySubdivision": "Taylor",
+          "countrySubdivision": "TX",
+          "countrySubdivisionName": "Texas",
+          "postalCode": "79603",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "North 2nd Street & North San Jose Drive, Abilene, TX 79603",
+          "localName": "Abilene"
+        },
+        "position": {
+          "lat": 32.45425,
+          "lon": -99.78191
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 32.45515,
+            "lon": -99.78298
+          },
+          "btmRightPoint": {
+            "lat": 32.45335,
+            "lon": -99.78084
+          }
+        }
+      },
+      {
+        "type": "Cross Street",
+        "id": "US/XSTR/p0/180882",
+        "score": 8.9260482788,
+        "dist": 2800811.7929499396,
+        "address": {
+          "streetName": "North 2nd Street & South 2nd Street",
+          "municipality": "San Jose",
+          "countrySecondarySubdivision": "Mason",
+          "countrySubdivision": "IL",
+          "countrySubdivisionName": "Illinois",
+          "postalCode": "62682",
+          "countryCode": "US",
+          "country": "United States",
+          "countryCodeISO3": "USA",
+          "freeformAddress": "North 2nd Street & South 2nd Street, San Jose, IL 62682",
+          "localName": "San Jose"
+        },
+        "position": {
+          "lat": 40.30556,
+          "lon": -89.60399
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 40.30646,
+            "lon": -89.60517
+          },
+          "btmRightPoint": {
+            "lat": 40.30466,
+            "lon": -89.60281
+          }
+        }
+      }
+    ]
+  }
+    

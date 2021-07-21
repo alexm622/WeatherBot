@@ -6,6 +6,7 @@ import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
 import com.alexcomeau.bot.embeds.DailyWeatherEmbed;
 import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
 import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
+import com.alexcomeau.response.tomtomGeocoding.TomTomGeocodingStruct;
 import com.alexcomeau.response.weekforecast.Weekly;
 import com.alexcomeau.utils.ApiRequest;
 import com.alexcomeau.utils.CommandParser;
@@ -13,6 +14,8 @@ import com.alexcomeau.utils.Debug;
 import com.alexcomeau.utils.api.CurrentWeather;
 import com.alexcomeau.utils.api.DailyWeather;
 import com.alexcomeau.utils.api.GoogleGeocode;
+import com.alexcomeau.utils.api.TomTomGeocode;
+
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -37,21 +40,48 @@ public class WeatherCommands {
            // Debug.debug("got city of " + city);
 
             //clean the request, if it contains special characters we remove it
+            /* 
+             * TODO: make this work with both api's
+             * this should be able to differentiate between the two api's
+             * and pick the best one
+             */
+            GoogleGeocodingStruct googleLocate;
+            TomTomGeocodingStruct tomtomLocate;
+            try{
 
-            GoogleGeocodingStruct geoLocate;
+                
 
-            String geoRequest = GoogleGeocode.googleGeocodingRequest(cs.input);
-            String json = "{\"status\":\"failed\"}";
-            try {
-                json = ApiRequest.makeRequest(geoRequest);
-            }catch(Exception e){
-                Debug.debug(e.getClass().toString(), true);
+                String geoRequest = GoogleGeocode.googleGeocodingRequest(cs.input);
+                String json = "{\"status\":\"failed\"}";
+                try {
+                    json = ApiRequest.makeRequest(geoRequest);
+                }catch(Exception e){
+                    Debug.debug(e.getClass().toString(), true);
+                }
+                Debug.debug("the json is: " + json);
+                googleLocate = GoogleGeocode.jsonToObject(json);
+                if(!googleLocate.getStatus().equals("OK")){
+                    googleLocate = null;
+                    Debug.debug("google failed");
+                    //switch to using tomtom
+                    String tomtomRequest = TomTomGeocode.tomtomGeocodingRequest(cs.input);
+                    json = "{\"status\":\"failed\"}";
+                    try {
+                        json = ApiRequest.makeRequest(tomtomRequest);
+                    }catch(Exception e){
+                        Debug.debug(e.getClass().toString(), true);
+                    }
+                    if(!TomTomGeocodingStruct.getStatus().equals("OK")){
+                        Debug.debug("tomtom failed");
+                        //send a message to the channel
+                        event.getChannel().sendMessage("I couldn't find that city, please try again.").queue();
+                        return false;
+                    }
+                }
             }
-            Debug.debug("the json is: " + json);
-            geoLocate = GoogleGeocode.jsonToObject(json);
 
             //create the request while replaces blank spaces with "%20"
-            String currentRequest = CurrentWeather.currentWeatherRequest(geoLocate);
+            String currentRequest = CurrentWeather.currentWeatherRequest(googleLocate);
 
 
             //make the api request
@@ -67,7 +97,7 @@ public class WeatherCommands {
             channel.sendMessage(output) /* => RestAction<Message> */
                     .queue();
             CurrentWeatherResponse r = CurrentWeather.currentWeatherAsObject(output);
-            channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, geoLocate, whatUnit)).queue();
+            channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, googleLocate, whatUnit)).queue();
             return true;
 
         }

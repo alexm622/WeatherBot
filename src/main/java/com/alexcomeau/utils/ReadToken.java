@@ -73,5 +73,20 @@ public class ReadToken {
         return logDets;
     }
 
+    public static String TomTomToken() {
+        String tokenPath = "/tokens/tomtom.txt";
+        String token;
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(tokenPath));
+            token = br.readLine();
+            br.close();
+        } catch (IOException e) {
+            Debug.debug(e.toString(), true);
+            token = "0";
+            return token;
+        }
+        return token;
+    }
+
 
 }
