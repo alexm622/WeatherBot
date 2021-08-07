@@ -6,7 +6,7 @@ import com.alexcomeau.bot.embeds.CurrentWeatherEmbed;
 import com.alexcomeau.bot.embeds.DailyWeatherEmbed;
 import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
 import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
-import com.alexcomeau.response.tomtomGeocoding.TomTomGeocodingStruct;
+import com.alexcomeau.response.tomtomGeocoding.*;
 import com.alexcomeau.response.weekforecast.Weekly;
 import com.alexcomeau.utils.ApiRequest;
 import com.alexcomeau.utils.CommandParser;
@@ -47,18 +47,22 @@ public class WeatherCommands {
              */
             GoogleGeocodingStruct googleLocate;
             TomTomGeocodingStruct tomtomLocate;
-            try{
+            //get the channel
+            MessageChannel channel = event.getChannel();
 
-                
+            String output;
+            try{
 
                 String geoRequest = GoogleGeocode.googleGeocodingRequest(cs.input);
                 String json = "{\"status\":\"failed\"}";
+                output = json;
                 try {
                     json = ApiRequest.makeRequest(geoRequest);
                 }catch(Exception e){
                     Debug.debug(e.getClass().toString(), true);
                 }
                 Debug.debug("the json is: " + json);
+                output = json;
                 googleLocate = GoogleGeocode.jsonToObject(json);
                 if(!googleLocate.getStatus().equals("OK")){
                     googleLocate = null;
@@ -71,33 +75,49 @@ public class WeatherCommands {
                     }catch(Exception e){
                         Debug.debug(e.getClass().toString(), true);
                     }
-                    if(!TomTomGeocodingStruct.getStatus().equals("OK")){
+                    tomtomLocate = TomTomGeocode.jsonToObject(tomtomRequest);
+                    try {
+                        json = ApiRequest.makeRequest(tomtomRequest);
+
+                    }catch(Exception e){
+                        Debug.debug(e.getClass().toString(), true);
+                    }
+                    if(!tomtomLocate.getStatus().equals("OK")){
                         Debug.debug("tomtom failed");
                         //send a message to the channel
                         event.getChannel().sendMessage("I couldn't find that city, please try again.").queue();
                         return false;
+                    }else{
+                        //do stuff
+                        //create the request while replaces blank spaces with "%20"
+                        String currentRequest = CurrentWeather.currentWeatherRequest(tomtomLocate);
+
+                        //make the api request
+                        output = ApiRequest.makeRequest(currentRequest);
+
+                        //TODO make this print out an embedded and handle error messages
+                        channel.sendMessage(output) /* => RestAction<Message> */
+                                .queue();
+                        CurrentWeatherResponse r = CurrentWeather.currentWeatherAsObject(output);
+                        channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, googleLocate, whatUnit)).queue();
                     }
+                }else{
+                    //create the request while replaces blank spaces with "%20"
+                    String currentRequest = CurrentWeather.currentWeatherRequest(googleLocate);
+
+
+                    //make the api request
+                    output = ApiRequest.makeRequest(currentRequest);
+                    //TODO make this print out an embedded and handle error messages
+                    channel.sendMessage(output) /* => RestAction<Message> */
+                            .queue();
+                    CurrentWeatherResponse r = CurrentWeather.currentWeatherAsObject(output);
+                    channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, googleLocate, whatUnit)).queue();
                 }
+            }catch(Exception e){
+                Debug.debug("both options failed");
             }
 
-            //create the request while replaces blank spaces with "%20"
-            String currentRequest = CurrentWeather.currentWeatherRequest(googleLocate);
-
-
-            //make the api request
-            String output = ApiRequest.makeRequest(currentRequest);
-
-
-
-            //get the channel
-            MessageChannel channel = event.getChannel();
-
-            //currently this will send the raw json response
-            //TODO make this print out an embedded and handle error messages
-            channel.sendMessage(output) /* => RestAction<Message> */
-                    .queue();
-            CurrentWeatherResponse r = CurrentWeather.currentWeatherAsObject(output);
-            channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, googleLocate, whatUnit)).queue();
             return true;
 
         }

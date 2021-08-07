@@ -2,6 +2,7 @@ package com.alexcomeau.utils.api;
 
 import com.alexcomeau.response.currentweather.CurrentWeatherResponse;
 import com.alexcomeau.response.googleGeocoding.GoogleGeocodingStruct;
+import com.alexcomeau.response.tomtomGeocoding.TomTomGeocodingStruct;
 import com.alexcomeau.utils.ReadToken;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,5 +33,19 @@ public class CurrentWeather {
 
         //return the json
         return r;
+    }
+
+    public static String currentWeatherRequest(TomTomGeocodingStruct tomtomLocate) {
+        //the template for the request
+        final String template = "http://api.openweathermap.org/data/2.5/weather?lat=$&lon=#&appid=";
+
+        //replace the dollar sign with the city and so on
+        String out = template.replace("$", Float.toString(tomtomLocate.getResults()[0].getPosition().getLat()))
+                .replace("#", Float.toString(tomtomLocate.getResults()[0].getPosition().getLon())) +
+                ReadToken.WeatherToken();
+        out.replace(" ", "$").replace("$", "%20");
+
+        //return the formatted request
+        return out;
     }
 }

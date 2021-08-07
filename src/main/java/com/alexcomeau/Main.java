@@ -18,22 +18,7 @@ public class Main {
                 .setActivity(Activity.playing("Poop Fart"))
                 .addEventListeners(new Bot())
                 .build();
-        /*
-        String request = "Plainville MA";
-        request = GeoCoding.geoCodingRequest(request);
-        Debug.debug("request is: " + request);
-        String json = "{\"status\":\"failed\"}";
-        try {
-            json = ApiRequest.makeRequest(request);
-        }catch(Exception e){
-            Debug.debug(e.getClass().toString(), true);
-        }
-        Debug.debug("the json is: " + json);
-        try {
-            GeoCoding.jsonToObject(json);
-        }catch(Exception e){
-            e.printStackTrace();
-        }*/
+
 
 
     }
