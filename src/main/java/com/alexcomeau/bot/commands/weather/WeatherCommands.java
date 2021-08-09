@@ -64,11 +64,13 @@ public class WeatherCommands {
                 Debug.debug("the json is: " + json);
                 output = json;
                 googleLocate = GoogleGeocode.jsonToObject(json);
+                Debug.debug("the status was " + googleLocate.getStatus());
                 if(!googleLocate.getStatus().equals("OK")){
                     googleLocate = null;
                     Debug.debug("google failed");
                     //switch to using tomtom
                     String tomtomRequest = TomTomGeocode.tomtomGeocodingRequest(cs.input);
+                    Debug.debug("the request is " + tomtomRequest);
                     json = "{\"status\":\"failed\"}";
                     try {
                         json = ApiRequest.makeRequest(tomtomRequest);
@@ -115,6 +117,7 @@ public class WeatherCommands {
                     channel.sendMessage(CurrentWeatherEmbed.buildEmbeded(r, googleLocate, whatUnit)).queue();
                 }
             }catch(Exception e){
+                e.printStackTrace();
                 Debug.debug("both options failed");
             }
 
